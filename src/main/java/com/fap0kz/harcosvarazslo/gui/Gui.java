@@ -29,26 +29,46 @@ public class Gui extends javax.swing.JFrame {
     
     public Gui() {
         initComponents();
+        alaphelyzet();
+        palyatMutat();
+        adatotMutat();
     }
     
     public void alaphelyzet() {
-        
+        palya = new Palya();
+        mezok = palya.getMezok();
+        harcosHP = r.nextInt(6)+3;
+        varazsloHP = r.nextInt(6)+3;
+        btnLepes.setEnabled(true);
+        lblGyoztes.setText("A győztes: ");
     }
     
     public void palyatMutat() {
-        
+        String egeszPalya = "";
+        for(int i = 0; i < mezok.length; i++) egeszPalya += mezok[i];
+        lblMezok.setText(egeszPalya);
     }
     
     public void adatotMutat() {
-        
+        lblHarcosHP.setText("Harcos HP: " + harcosHP);
+        lblVarazsloHP.setText("Varázsló HP: " + varazsloHP);
     }
     
     private void harc() {
-        
+        harcosHP -= r.nextInt(6);
+        varazsloHP -= r.nextInt(6);
+        jatekVege();
     }
 
     private void jatekVege() {
-        
+        String vege = "A győztes: ";
+        boolean lepes = false;
+        if(varazsloHP <= 0 && harcosHP <= 0) vege += "Döntetlen";
+        else if(harcosHP <= 0) vege += "Varázsló";
+        else if(varazsloHP <= 0) vege += "Harcos";
+        else lepes = true;
+        lblGyoztes.setText(vege);
+        btnLepes.setEnabled(lepes);
     }
     
     /**
@@ -68,6 +88,7 @@ public class Gui extends javax.swing.JFrame {
         lblMezok = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Harcos és Varázsló");
 
         btnLepes.setText("Lepes");
         btnLepes.setMaximumSize(new java.awt.Dimension(56, 17));
@@ -94,6 +115,8 @@ public class Gui extends javax.swing.JFrame {
 
         lblVarazsloHP.setText("Varazslo");
 
+        lblMezok.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        lblMezok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMezok.setText("Mezok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -103,37 +126,35 @@ public class Gui extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnLepes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHarcosHP))
+                    .addComponent(btnLepes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHarcosHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVarazsloHP))
+                    .addComponent(btnUjra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVarazsloHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(55, 55, 55))
             .addGroup(layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(lblMezok)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(96, 96, 96)
-                .addComponent(lblGyoztes)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMezok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblGyoztes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(lblMezok)
-                .addGap(44, 44, 44)
+                .addGap(75, 75, 75)
+                .addComponent(lblMezok, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHarcosHP)
-                    .addComponent(lblVarazsloHP))
-                .addGap(40, 40, 40)
-                .addComponent(lblGyoztes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                    .addComponent(lblHarcosHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblVarazsloHP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(lblGyoztes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLepes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLepes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUjra, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
 
@@ -142,10 +163,25 @@ public class Gui extends javax.swing.JFrame {
 
     private void btnLepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLepesActionPerformed
         // TODO add your handling code here:
+        for(int i = 0; i < HOSSZ; i++) mezok[i] = URES;
+        int harcosMezo = r.nextInt(HOSSZ), varazsloMezo = r.nextInt(HOSSZ);
+        if(harcosMezo == varazsloMezo) {
+            mezok[harcosMezo] = HARC;
+            harc();
+        }
+        else {
+            mezok[harcosMezo] = HARCOS;
+            mezok[varazsloMezo] = VARAZSLO;
+        }
+        palyatMutat();
+        adatotMutat();
     }//GEN-LAST:event_btnLepesActionPerformed
 
     private void btnUjraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjraActionPerformed
         // TODO add your handling code here:
+        alaphelyzet();
+        palyatMutat();
+        adatotMutat();
     }//GEN-LAST:event_btnUjraActionPerformed
 
     /**
