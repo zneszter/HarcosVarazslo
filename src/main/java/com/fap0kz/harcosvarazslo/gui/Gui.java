@@ -26,21 +26,93 @@ public class Gui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLepes = new javax.swing.JButton();
+        btnUjra = new javax.swing.JButton();
+        lblHarcosHP = new javax.swing.JLabel();
+        lblGyoztes = new javax.swing.JLabel();
+        lblVarazsloHP = new javax.swing.JLabel();
+        lblMezok = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnLepes.setText("Lepes");
+        btnLepes.setMaximumSize(new java.awt.Dimension(56, 17));
+        btnLepes.setMinimumSize(new java.awt.Dimension(56, 17));
+        btnLepes.setPreferredSize(new java.awt.Dimension(76, 23));
+        btnLepes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLepesActionPerformed(evt);
+            }
+        });
+
+        btnUjra.setText("Ujra");
+        btnUjra.setMaximumSize(new java.awt.Dimension(56, 17));
+        btnUjra.setMinimumSize(new java.awt.Dimension(56, 17));
+        btnUjra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUjraActionPerformed(evt);
+            }
+        });
+
+        lblHarcosHP.setText("Harcos");
+
+        lblGyoztes.setText("A gyöztes:");
+
+        lblVarazsloHP.setText("Varazslo");
+
+        lblMezok.setText("Mezok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnLepes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHarcosHP))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVarazsloHP))
+                .addGap(55, 55, 55))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(162, 162, 162)
+                .addComponent(lblMezok)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(lblGyoztes)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(79, 79, 79)
+                .addComponent(lblMezok)
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblHarcosHP)
+                    .addComponent(lblVarazsloHP))
+                .addGap(40, 40, 40)
+                .addComponent(lblGyoztes)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLepes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUjra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnLepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLepesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLepesActionPerformed
+
+    private void btnUjraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUjraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUjraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -71,12 +143,20 @@ public class Gui extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Gui().setVisible(true);
             }
         });
     }
 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLepes;
+    private javax.swing.JButton btnUjra;
+    private javax.swing.JLabel lblGyoztes;
+    private javax.swing.JLabel lblHarcosHP;
+    private javax.swing.JLabel lblMezok;
+    private javax.swing.JLabel lblVarazsloHP;
     // End of variables declaration//GEN-END:variables
 }
