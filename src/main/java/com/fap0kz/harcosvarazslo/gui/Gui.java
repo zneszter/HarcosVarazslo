@@ -4,6 +4,10 @@
  */
 package com.fap0kz.harcosvarazslo.gui;
 
+import com.fap0kz.harcosvarazslo.modell.Palya;
+import java.util.Random;
+
+
 /**
  *
  * @author neszterzsolt
@@ -13,10 +17,40 @@ public class Gui extends javax.swing.JFrame {
     /**
      * Creates new form Gui
      */
+    
+    private Palya palya = new Palya();
+    private final int HOSSZ = palya.getHOSSZ();
+    private final String HARCOS = palya.getHARCOS(), VARAZSLO = palya.getVARAZSLO(), URES = palya.getURES(), HARC = palya.getHARC();
+    private String[] mezok = new String[HOSSZ];
+    private int harcosHP, varazsloHP;
+    private Random r = new Random();
+    
+    
+    
     public Gui() {
         initComponents();
     }
+    
+    public void alaphelyzet() {
+        
+    }
+    
+    public void palyatMutat() {
+        
+    }
+    
+    public void adatotMutat() {
+        
+    }
+    
+    private void harc() {
+        
+    }
 
+    private void jatekVege() {
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
