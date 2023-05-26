@@ -4,6 +4,8 @@
 
 package com.fap0kz.harcosvarazslo;
 
+import com.fap0kz.harcosvarazslo.gui.Gui;
+
 /**
  *
  * @author neszterzsolt
@@ -11,6 +13,7 @@ package com.fap0kz.harcosvarazslo;
 public class HarcosVarazslo {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        //System.out.println("Hello World!");
+        new Gui().setVisible(true);
     }
 }
