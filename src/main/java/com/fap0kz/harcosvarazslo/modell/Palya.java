@@ -42,6 +42,10 @@ public class Palya {
     public int getHOSSZ() {
         return HOSSZ;
     }
+
+    public String[] getMezok() {
+       return mezok;
+    }
     
     
     
