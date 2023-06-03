@@ -4,18 +4,20 @@
  */
 package com.fap0kz.harcosvarazslo.modell;
 
+import java.util.Random;
+
 /**
  *
  * @author neszterzsolt
  */
 public class Karakterek {
-    private final int eletero;
+    private int eletero;
     private String nev;
-//    private final String HARCOS = "H";
-//    private final String VARAZSLO = "V";
+    public static Random random = new Random();
+
 
     public Karakterek() {
-        this.eletero = Funkciok.eletero();
+        this.eletero = eletero();
     }
 
     public String getNev() {
@@ -29,6 +31,19 @@ public class Karakterek {
     public void harc(Karakterek karakterek) {
     
     }
+
+    public int getEletero() {
+        return eletero;
+    }
+
+    public void setEletero(int eletero) {
+        this.eletero = eletero;
+    }
     
+    
+        
+    public static int eletero() {
+        return random.nextInt(6)+3;
+    }
     
 }
