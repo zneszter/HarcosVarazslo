@@ -80,7 +80,7 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnLepes">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lepes"/>
+        <Property name="text" type="java.lang.String" value="L&#xe9;p&#xe9;s"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[56, 17]"/>
         </Property>
@@ -97,7 +97,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnUjra">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ujra"/>
+        <Property name="text" type="java.lang.String" value="&#xda;jra"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[56, 17]"/>
         </Property>
@@ -130,7 +130,7 @@
           <Font name="Helvetica Neue" size="36" style="0"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Mezok"/>
+        <Property name="text" type="java.lang.String" value="Mez&#x151;k"/>
       </Properties>
     </Component>
   </SubComponents>

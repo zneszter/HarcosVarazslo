@@ -4,12 +4,7 @@
  */
 package com.fap0kz.harcosvarazslo.gui;
 
-import com.fap0kz.harcosvarazslo.modell.Funkciok;
-import com.fap0kz.harcosvarazslo.modell.Harc;
-import com.fap0kz.harcosvarazslo.modell.Harcos;
-import com.fap0kz.harcosvarazslo.modell.Karakterek;
-import com.fap0kz.harcosvarazslo.modell.Palya;
-import com.fap0kz.harcosvarazslo.modell.Varazslo;
+import com.fap0kz.harcosvarazslo.modell.*;
 import java.util.Random;
 
 
@@ -17,7 +12,7 @@ import java.util.Random;
  *
  * @author neszterzsolt
  */
-public class Gui extends javax.swing.JFrame implements Harc {
+public class Gui extends javax.swing.JFrame implements AppInterface {
 
     /**
      * Creates new form Gui
@@ -29,7 +24,7 @@ public class Gui extends javax.swing.JFrame implements Harc {
     private String VarazsloNev = null;
     private final String URES = palya.getURES(), HARC = palya.getHARC();
     private String[] mezok = new String[HOSSZ];
-    private int harcosHP, varazsloHP;
+    private int harcosEro, varazsloEro;
     private Random r = new Random();
     
     
@@ -43,20 +38,22 @@ public class Gui extends javax.swing.JFrame implements Harc {
     
     
     
+    @Override
     public void alaphelyzet() {
-        palya = new Palya();
+        Palya palya = new Palya();
         mezok = palya.getMezok();
         Harcos harcos = new Harcos();
         Varazslo varazslo = new Varazslo();
         HarcosNev = harcos.getNev();
         VarazsloNev = varazslo.getNev();
-        harcosHP = Funkciok.eletero();
-        varazsloHP = Funkciok.eletero();
+        harcosEro = harcos.getEletero();
+        varazsloEro = varazslo.getEletero();
         btnLepes.setEnabled(true);
         lblGyoztes.setText("A győztes: ");
     }
     
     
+    @Override
     public void palyatMutat() {
         String egeszPalya = "";
         for(int i = 0; i < mezok.length; i++) egeszPalya += mezok[i];
@@ -64,24 +61,27 @@ public class Gui extends javax.swing.JFrame implements Harc {
     }
     
     
+    @Override
     public void adatotMutat() {
-        lblHarcosHP.setText("Harcos HP: " + harcosHP);
-        lblVarazsloHP.setText("Varázsló HP: " + varazsloHP);
+        lblHarcosHP.setText("Harcos ereje: " + harcosEro);
+        lblVarazsloHP.setText("Varázsló ereje: " + varazsloEro);
     }
     
     @Override
     public void harc() {
-        harcosHP -= r.nextInt(6);
-        varazsloHP -= r.nextInt(6);
+        
+        harcosEro -= Karakterek.dob();
+        varazsloEro -= Karakterek.dob();
         jatekVege();
     }
 
-    private void jatekVege() {
+    @Override
+    public void jatekVege() {
         String vege = "A győztes: ";
         boolean lepes = false;
-        if(varazsloHP <= 0 && harcosHP <= 0) vege += "Döntetlen";
-        else if(harcosHP <= 0) vege += "Varázsló";
-        else if(varazsloHP <= 0) vege += "Harcos";
+        if(varazsloEro <= 0 && harcosEro <= 0) vege += "Döntetlen";
+        else if(harcosEro <= 0) vege += "Varázsló";
+        else if(varazsloEro <= 0) vege += "Harcos";
         else lepes = true;
         lblGyoztes.setText(vege);
         btnLepes.setEnabled(lepes);
@@ -106,7 +106,7 @@ public class Gui extends javax.swing.JFrame implements Harc {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Harcos és Varázsló");
 
-        btnLepes.setText("Lepes");
+        btnLepes.setText("Lépés");
         btnLepes.setMaximumSize(new java.awt.Dimension(56, 17));
         btnLepes.setMinimumSize(new java.awt.Dimension(56, 17));
         btnLepes.setPreferredSize(new java.awt.Dimension(76, 23));
@@ -116,7 +116,7 @@ public class Gui extends javax.swing.JFrame implements Harc {
             }
         });
 
-        btnUjra.setText("Ujra");
+        btnUjra.setText("Újra");
         btnUjra.setMaximumSize(new java.awt.Dimension(56, 17));
         btnUjra.setMinimumSize(new java.awt.Dimension(56, 17));
         btnUjra.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class Gui extends javax.swing.JFrame implements Harc {
 
         lblMezok.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
         lblMezok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblMezok.setText("Mezok");
+        lblMezok.setText("Mezők");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
