@@ -11,7 +11,6 @@ package com.fap0kz.harcosvarazslo.modell;
 public class Varazslo extends Karakterek{
     
     private String nev;
-//    private final String VARAZSLO = "V";
 
     public Varazslo() {
         super();
