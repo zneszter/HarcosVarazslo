@@ -13,6 +13,7 @@ import java.util.Random;
 public class Karakterek {
     private int eletero;
     private String nev;
+    private int pozicio;
     public static Random random = new Random();
 
 
@@ -35,6 +36,14 @@ public class Karakterek {
 
     public void setEletero(int eletero) {
         this.eletero = eletero;
+    }
+
+    public int getPozicio() {
+        return pozicio;
+    }
+
+    public void setPozicio(int pozicio) {
+        this.pozicio = pozicio;
     }
     
     

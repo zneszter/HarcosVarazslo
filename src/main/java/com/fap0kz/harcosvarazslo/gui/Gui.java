@@ -20,10 +20,12 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     
     private Palya palya = new Palya();
     private final int HOSSZ = palya.getHOSSZ();
+    private final String URES = palya.getURES();
+    private final String HARC = palya.getHARC();
+    private String[] mezok = palya.getMezok();
+//    private String[] mezok = new String[HOSSZ];
     private String HarcosNev = null;
     private String VarazsloNev = null;
-    private final String URES = palya.getURES(), HARC = palya.getHARC();
-    private String[] mezok = new String[HOSSZ];
     private int harcosEro, varazsloEro;
     private Random r = new Random();
     
@@ -39,7 +41,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     
     
     @Override
-    public void alaphelyzet() {
+    public final void alaphelyzet() {
         Palya palya = new Palya();
         mezok = palya.getMezok();
         Harcos harcos = new Harcos();
@@ -54,7 +56,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     
     
     @Override
-    public void palyatMutat() {
+    public final void palyatMutat() {
         String egeszPalya = "";
         for(int i = 0; i < mezok.length; i++) egeszPalya += mezok[i];
         lblMezok.setText(egeszPalya);
@@ -62,7 +64,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     
     
     @Override
-    public void adatotMutat() {
+    public final void adatotMutat() {
         lblHarcosHP.setText("Harcos ereje: " + harcosEro);
         lblVarazsloHP.setText("Varázsló ereje: " + varazsloEro);
     }
@@ -185,11 +187,11 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
 
     private void btnLepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLepesActionPerformed
         // TODO add your handling code here:
-        for(int i = 0; i < HOSSZ; i++) mezok[i] = URES;
-        int harcosMezo = Karakterek.lep(HOSSZ);
-        int varazsloMezo = Karakterek.lep(HOSSZ);
+        for(int i = 0; i < palya.getHOSSZ(); i++) mezok[i] = palya.getURES();
+        int harcosMezo = Karakterek.lep(palya.getHOSSZ());
+        int varazsloMezo = Karakterek.lep(palya.getHOSSZ());
         if(harcosMezo == varazsloMezo) {
-            mezok[harcosMezo] = HARC;
+            mezok[harcosMezo] = palya.getHARC();
             harc();
         }
         else {
