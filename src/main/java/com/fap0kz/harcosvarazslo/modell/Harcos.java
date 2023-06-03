@@ -11,7 +11,6 @@ package com.fap0kz.harcosvarazslo.modell;
 public class Harcos extends Karakterek {
 
     private String nev;
-//    private final String HARCOS = "H";
     
     public Harcos() {
         super();
