@@ -13,12 +13,13 @@ public class Palya {
     
 
     private final String URES = "_";
-    private final String HARC = "X";
+    private String HARC;
     private final int HOSSZ = 3;
     private String[] mezok = new String[HOSSZ];
     
     public Palya() {
         for(int i = 0; i < HOSSZ; i++) mezok[i] = URES;
+        this.HARC = "X";
     }
     
     

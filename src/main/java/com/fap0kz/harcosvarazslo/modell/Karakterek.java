@@ -43,8 +43,12 @@ public class Karakterek {
         return (random.nextInt(6)+3);
     }
     
-    public static int dob() {
+    public static int harc() {
         return (random.nextInt(6));
+    }
+    
+    public static int lep(int HOSSZ) {
+        return (random.nextInt(HOSSZ));
     }
     
 }
