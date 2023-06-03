@@ -70,8 +70,8 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     @Override
     public void harc() {
         
-        harcosEro -= Karakterek.dob();
-        varazsloEro -= Karakterek.dob();
+        harcosEro -= Karakterek.harc();
+        varazsloEro -= Karakterek.harc();
         jatekVege();
     }
 
@@ -186,7 +186,8 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     private void btnLepesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLepesActionPerformed
         // TODO add your handling code here:
         for(int i = 0; i < HOSSZ; i++) mezok[i] = URES;
-        int harcosMezo = r.nextInt(HOSSZ), varazsloMezo = r.nextInt(HOSSZ);
+        int harcosMezo = Karakterek.lep(HOSSZ);
+        int varazsloMezo = Karakterek.lep(HOSSZ);
         if(harcosMezo == varazsloMezo) {
             mezok[harcosMezo] = HARC;
             harc();
