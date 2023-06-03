@@ -11,6 +11,10 @@ package com.fap0kz.harcosvarazslo.modell;
 public interface AppInterface {
     
     void harc ();
+    void alaphelyzet();
+    void palyatMutat();
+    void adatotMutat();
+    void jatekVege();
     
     
     
