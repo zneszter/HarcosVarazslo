@@ -10,7 +10,9 @@ package com.fap0kz.harcosvarazslo.modell;
  */
 public class Palya {
     
-    private final String HARCOS = "H", VARAZSLO = "V", URES = "_", HARC = "X";
+//    private final String HARCOS = "H";
+//    private final String VARAZSLO = "V";
+    private final String URES = "_", HARC = "X";
     private final int HOSSZ = 3;
     private String[] mezok = new String[HOSSZ];
     
@@ -23,13 +25,13 @@ public class Palya {
         this.mezok = mezok;
     }
 
-    public String getHARCOS() {
-        return HARCOS;
-    }
-
-    public String getVARAZSLO() {
-        return VARAZSLO;
-    }
+//    public String getHARCOS() {
+//        return HARCOS;
+//    }
+//
+//    public String getVARAZSLO() {
+//        return VARAZSLO;
+//    }
 
     public String getURES() {
         return URES;
