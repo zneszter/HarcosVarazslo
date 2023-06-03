@@ -4,7 +4,12 @@
  */
 package com.fap0kz.harcosvarazslo.gui;
 
+import com.fap0kz.harcosvarazslo.modell.Funkciok;
+import com.fap0kz.harcosvarazslo.modell.Harc;
+import com.fap0kz.harcosvarazslo.modell.Harcos;
+import com.fap0kz.harcosvarazslo.modell.Karakterek;
 import com.fap0kz.harcosvarazslo.modell.Palya;
+import com.fap0kz.harcosvarazslo.modell.Varazslo;
 import java.util.Random;
 
 
@@ -12,7 +17,7 @@ import java.util.Random;
  *
  * @author neszterzsolt
  */
-public class Gui extends javax.swing.JFrame {
+public class Gui extends javax.swing.JFrame implements Harc {
 
     /**
      * Creates new form Gui
@@ -20,7 +25,9 @@ public class Gui extends javax.swing.JFrame {
     
     private Palya palya = new Palya();
     private final int HOSSZ = palya.getHOSSZ();
-    private final String HARCOS = palya.getHARCOS(), VARAZSLO = palya.getVARAZSLO(), URES = palya.getURES(), HARC = palya.getHARC();
+    private String HarcosNev = null;
+    private String VarazsloNev = null;
+    private final String URES = palya.getURES(), HARC = palya.getHARC();
     private String[] mezok = new String[HOSSZ];
     private int harcosHP, varazsloHP;
     private Random r = new Random();
@@ -39,8 +46,12 @@ public class Gui extends javax.swing.JFrame {
     public void alaphelyzet() {
         palya = new Palya();
         mezok = palya.getMezok();
-        harcosHP = r.nextInt(6)+3;
-        varazsloHP = r.nextInt(6)+3;
+        Harcos harcos = new Harcos();
+        Varazslo varazslo = new Varazslo();
+        HarcosNev = harcos.getNev();
+        VarazsloNev = varazslo.getNev();
+        harcosHP = Funkciok.eletero();
+        varazsloHP = Funkciok.eletero();
         btnLepes.setEnabled(true);
         lblGyoztes.setText("A győztes: ");
     }
@@ -58,7 +69,8 @@ public class Gui extends javax.swing.JFrame {
         lblVarazsloHP.setText("Varázsló HP: " + varazsloHP);
     }
     
-    private void harc() {
+    @Override
+    public void harc() {
         harcosHP -= r.nextInt(6);
         varazsloHP -= r.nextInt(6);
         jatekVege();
@@ -180,8 +192,8 @@ public class Gui extends javax.swing.JFrame {
             harc();
         }
         else {
-            mezok[harcosMezo] = HARCOS;
-            mezok[varazsloMezo] = VARAZSLO;
+            mezok[harcosMezo] = HarcosNev;
+            mezok[varazsloMezo] = VarazsloNev;
         }
         palyatMutat();
         adatotMutat();
