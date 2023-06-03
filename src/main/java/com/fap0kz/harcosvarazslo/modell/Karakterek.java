@@ -28,9 +28,6 @@ public class Karakterek {
         this.nev = nev;
     }
 
-    public void harc(Karakterek karakterek) {
-    
-    }
 
     public int getEletero() {
         return eletero;
@@ -43,7 +40,11 @@ public class Karakterek {
     
         
     public static int eletero() {
-        return random.nextInt(6)+3;
+        return (random.nextInt(6)+3);
+    }
+    
+    public static int dob() {
+        return (random.nextInt(6));
     }
     
 }
