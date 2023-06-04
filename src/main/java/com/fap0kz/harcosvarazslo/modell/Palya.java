@@ -4,6 +4,7 @@
  */
 package com.fap0kz.harcosvarazslo.modell;
 
+import com.fap0kz.harcosvarazslo.Multithreads;
 /**
  *
  * @author neszterzsolt
@@ -45,7 +46,7 @@ public class Palya {
     public String[] getMezok() {
        return mezok;
     }
-    
-    
-    
+
+
+     
 }

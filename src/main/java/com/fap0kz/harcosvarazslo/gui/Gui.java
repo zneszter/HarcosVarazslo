@@ -4,8 +4,11 @@
  */
 package com.fap0kz.harcosvarazslo.gui;
 
+import com.fap0kz.harcosvarazslo.Multithreads;
 import com.fap0kz.harcosvarazslo.modell.*;
 import java.util.Random;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 
 /**
@@ -26,11 +29,11 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
 //    private String[] mezok = new String[HOSSZ];
     private String HarcosNev = null;
     private String VarazsloNev = null;
-    private int harcosEro, varazsloEro;
+    private String ThreadName = Thread.currentThread().getName();
+    private int harcosEro, varazsloEro, harcero;
     private Random r = new Random();
     
-    
-    
+      
     public Gui() {
         initComponents();
         alaphelyzet();
@@ -52,6 +55,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
         varazsloEro = varazslo.getEletero();
         btnLepes.setEnabled(true);
         lblGyoztes.setText("A győztes: ");
+        ThreadName = Thread.currentThread().getName();
     }
     
     
@@ -60,6 +64,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
         String egeszPalya = "";
         for(int i = 0; i < mezok.length; i++) egeszPalya += mezok[i];
         lblMezok.setText(egeszPalya);
+        ThreadName = Thread.currentThread().getName();
     }
     
     
@@ -67,13 +72,22 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     public final void adatotMutat() {
         lblHarcosHP.setText("Harcos ereje: " + harcosEro);
         lblVarazsloHP.setText("Varázsló ereje: " + varazsloEro);
+        ThreadName = Thread.currentThread().getName();
+        lblThread.setText("Jelenlegi thread: " + Thread.currentThread().getName());
     }
     
     @Override
     public void harc() {
+        Multithreads m2 = new Multithreads();
+        Thread t2 = new Thread(m2);
+        t2.setName("Harc thread");
+        t2.start();
+        ThreadName = Thread.currentThread().getName();
+//        System.out.println(ThreadName);
+        harcero = Karakterek.harc();
+        harcosEro -= harcero;
+        varazsloEro -= harcero;
         
-        harcosEro -= Karakterek.harc();
-        varazsloEro -= Karakterek.harc();
         jatekVege();
     }
 
@@ -104,6 +118,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
         lblGyoztes = new javax.swing.JLabel();
         lblVarazsloHP = new javax.swing.JLabel();
         lblMezok = new javax.swing.JLabel();
+        lblThread = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Harcos és Varázsló");
@@ -137,6 +152,8 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
         lblMezok.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMezok.setText("Mezők");
 
+        lblThread.setText("Thread:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -160,14 +177,21 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
                 .addComponent(lblMezok, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(lblGyoztes, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(144, 144, 144)
+                        .addComponent(lblGyoztes, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(lblThread)))
                 .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(30, 30, 30)
+                .addComponent(lblThread)
+                .addGap(28, 28, 28)
                 .addComponent(lblMezok, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -198,6 +222,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
             mezok[harcosMezo] = HarcosNev;
             mezok[varazsloMezo] = VarazsloNev;
         }
+//        ThreadName = Thread.currentThread().getName();
         palyatMutat();
         adatotMutat();
     }//GEN-LAST:event_btnLepesActionPerformed
@@ -239,8 +264,8 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
-            public void run() {
-                new Gui().setVisible(true);
+            public void run() { 
+//                new Gui().setVisible(true);
             }
         });
     }
@@ -252,6 +277,7 @@ public class Gui extends javax.swing.JFrame implements AppInterface {
     private javax.swing.JLabel lblGyoztes;
     private javax.swing.JLabel lblHarcosHP;
     private javax.swing.JLabel lblMezok;
+    private javax.swing.JLabel lblThread;
     private javax.swing.JLabel lblVarazsloHP;
     // End of variables declaration//GEN-END:variables
 }
